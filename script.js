@@ -1,17 +1,18 @@
+// Retrieve tasks and nextId from localStorage
 let taskData = JSON.parse(localStorage.getItem("taskData")) || [];
 let nextId = JSON.parse(localStorage.getItem("nextId")) || 1; //if its full, return it, if its empty, make it 1 so the console doesn't render null
 
-// Create a function to generate a unique task id
+//converts nextId to string, increases by one each refresh, stores it in local storage
 function generateTaskId() {
-    const uniqueId = nextId.toString(); //convert to string
-    nextId++;//adding by 1 after each page refresh
-    localStorage.setItem("nextId", JSON.stringify(nextId)); //setting it into local storage
-    return uniqueId; //this is the unique id for each div
+    const uniqueId = nextId.toString();
+    nextId++;
+    localStorage.setItem("nextId", JSON.stringify(nextId));
+    return uniqueId;
 }
 
-// Todo: create a function to create a task card
+// creates card, adds classes, id, to make it draggable and correct styles appear
 function createTaskCard(task) {
-    const taskCard = $('<div>').addClass('task-card draggable overlap')
+    const taskCard = $('<div>').addClass('task-card draggable overlap ' + task.status).attr('id', task.id);//create div, add class, add uuid
     const title = $('<p>').text(task.taskTitle);//creating html elements
     const date = $('<p>').text(task.taskDate);
     const desc = $('<p>').text(task.taskDesc);
@@ -21,16 +22,17 @@ function createTaskCard(task) {
 
     taskCard.draggable();
 }
-
-// Todo: create a function to render the task list and make cards draggable
+// renders each task by calling createTaskCard function and checking if the todo-card div is empty to avoid duplicates
 function renderTaskList() {
-    $("#todo-cards").empty(); //this is to avoid duplicate 
-    taskData.forEach(function (task) {
-        createTaskCard(task)
-    })
+    $("#todo-cards").empty();
+
+    taskData.forEach(task => {
+        createTaskCard(task);
+    });
 }
 
-// Todo: create a function to handle adding a new task
+
+//prevents users from submitting empty inputs, adds background color classes dynamically, pushes data into local storage
 function handleAddTask(event) {
     event.preventDefault();
 
@@ -49,9 +51,9 @@ function handleAddTask(event) {
     } else if (taskDesc === 'done') {
         statusClass = 'done';
     } else {
-        statusClass = ''; // Default status class
+        statusClass = '';
     }
-    //pushing new task into task arr
+
     const newTask = {
         id: generateTaskId(),
         taskTitle: $('#task-title').val(),
@@ -61,17 +63,17 @@ function handleAddTask(event) {
     };
 
     taskData.push(newTask);
-    //setting local storage for task data
+
     localStorage.setItem('taskData', JSON.stringify(taskData));
 
-    createTaskCard(newTask); // Render only the newly added task card
-    //clears input values after submission
+    createTaskCard(newTask);
+
     $('#task-title').val('');
     $('#task-date').val('');
     $('#task-desc').val('');
 }
 
-
+//Finds the task card with the parent element of task-card, filters taskData to render only cards that aren't deleted, updates local storage
 function handleDeleteTask(event) {
     const deletedTaskId = $(this).closest('.task-card').attr('id');
 
@@ -82,12 +84,12 @@ function handleDeleteTask(event) {
     $(this).closest('.task-card').remove();
 }
 
-// Todo: create a function to handle dropping a task into a new status lane
+// Create a function to handle dropping a task into a new status lane
 function handleDrop(event, ui) {
 
 }
 
-// Todo: when the page loads, render the task list, add event listeners, make lanes droppable, and make the due date field a date picker
+
 $(document).ready(function () {
     renderTaskList();
 
@@ -97,4 +99,9 @@ $(document).ready(function () {
 
     $('body').on('click', '.task-card button', handleDeleteTask);
 
+    // Make lanes droppable
+    $('.droppable').droppable({
+        accept: '.task-card',
+        drop: handleDrop
+    });
 });
