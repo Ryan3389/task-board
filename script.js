@@ -75,13 +75,23 @@ function handleAddTask(event) {
 
 //Finds the task card with the parent element of task-card, filters taskData to render only cards that aren't deleted, updates local storage
 function handleDeleteTask(event) {
-    const deletedTaskId = $(this).closest('.task-card').attr('id');
+    // Find the task card that is being deleted
+    //const deletedTaskId = $(this).closest('.task-card').attr('id');
+    const deletedTaskId = $(event.target).parent('.task-card').attr('id');
 
-    taskData = taskData.filter(task => task.id !== deletedTaskId);
 
+    // Remove the deleted task from taskData array
+    //taskData = taskData.filter(task => task.id !== deletedTaskId);
+    taskData = taskData.filter(function (task) {
+        return task.id !== deletedTaskId
+    })
+
+
+    // Update the local storage with the modified taskData
     localStorage.setItem('taskData', JSON.stringify(taskData));
 
-    $(this).closest('.task-card').remove();
+    // Remove the task card from the UI
+    $(event.target).parent('.task-card').remove();
 }
 
 // Create a function to handle dropping a task into a new status lane

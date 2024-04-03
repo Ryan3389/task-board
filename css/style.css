@@ -52,14 +52,14 @@ label {
 }
 
 .past-due {
-    background-color: red;
+    background-color: rgba(255, 0, 0, 0.557);
 
 }
 
 .in-progress {
-    background-color: rgb(217, 217, 73);
+    background-color: rgba(224, 224, 2, 0.557);
 }
 
 .done {
-    background-color: white;
+    background-color: rgba(0, 128, 0, 0.557);
 }
