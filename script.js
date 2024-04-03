@@ -24,7 +24,10 @@ function createTaskCard(task) {
 
 // Todo: create a function to render the task list and make cards draggable
 function renderTaskList() {
-
+    $("#todo-cards").empty(); //this is to avoid duplicate 
+    taskData.forEach(function (task) {
+        createTaskCard(task)
+    })
 }
 
 // Todo: create a function to handle adding a new task
@@ -80,5 +83,9 @@ function handleDrop(event, ui) {
 
 // Todo: when the page loads, render the task list, add event listeners, make lanes droppable, and make the due date field a date picker
 $(document).ready(function () {
+    renderTaskList();
 
+    $('form').on('submit', function (event) {
+        handleAddTask(event);
+    });
 });
