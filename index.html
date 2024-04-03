@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+  <link rel="stylesheet" href="css/style.css">
+  <title>Task Board</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <!--HEADER-->
+  <header class="p-4 mb-4 text-center border-bottom border-5">
+    <h1 class="display-3">Task Board</h1>
+    <p class="lead">A simple Kanban board for task management</p>
+  </header>
+  <!--END OF HEADER-->
+  <div class="container">
+    <div class="text-center mb-5">
+      <!--BUTTON-->
+      <button type="button" class="btn btn-success submit-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Add Task
+      </button>
+
+      <!--END OF BUTTON-->
+    </div>
+
+
+    <!--MODAL WITH FORM-->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <!--FORM-->
+            <form>
+              <div class="mb-3">
+                <label for="task-title" class="form-label">Task Title</label>
+                <input type="text" class="form-control" id="task-title">
+              </div>
+              <div class="mb-3">
+                <label for="task-date" class="form-label">Task Date</label>
+                <input type="date" class="form-control" id="task-date">
+
+              </div>
+              <div class="mb-3 form-check task-desc">
+                <label class="form-check-label" for="task-desc">Task Description</label>
+                <textarea name="task-desc" id="task-desc"></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+            <!--END OF FORM-->
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--END OF MODAL-->
+    <!--TO DO LANES -->
+    <div class="row swim-lanes text-center justify-content-between">
+      <div class="col-12 col-lg-4 d-flex">
+        <div id="to-do" class="card border-light mb-3 lane flex-grow-1">
+          <div class="card-header bg-white">
+            <h2 class="card-title mb-1">To Do</h2>
+          </div>
+          <div class="card-body bg-light">
+            <!--TO DO-->
+            <div id="todo-cards" class="droppable"></div>
+            <!--END OF TO DO-->
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-lg-4 d-flex">
+        <div id="in-progress" class="card border-light mb-3 lane flex-grow-1">
+          <div class="card-header bg-white">
+            <h2 class="card-title mb-1">In Progress</h2>
+          </div>
+          <div class="card-body bg-light">
+            <!--IN PROGRESS DIV-->
+            <div id="in-progress-cards" class="droppable"></div>
+            <!--END OF IN PROGRESS-->
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-lg-4 d-flex">
+        <div id="done" class="card border-light mb-3 lane flex-grow-1">
+          <div class="card-header bg-white">
+            <h2 class="card-title mb-1">Done</h2>
+          </div>
+          <div class="card-body bg-light">
+            <!--DONE CARDS-->
+            <div id="done-cards" class="droppable"></div>
+            <!--END OF DONE CARDS-->
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--END OF TO DO LANES-->
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js"></script>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+  <script src="script.js"></script>
+
+</body>
+
+</html>
