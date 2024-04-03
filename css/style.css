@@ -25,11 +25,6 @@ label {
     width: 100%;
 }
 
-.task-card {
-    width: 40%;
-    border-radius: 10px;
-    font-weight: bold;
-}
 
 .btn-container {
     display: flex;
@@ -40,17 +35,31 @@ label {
     z-index: 1;
 }
 
+.task-card {
+    padding: 10px;
+    width: 40%;
+    border-radius: 10px;
+    font-weight: bold;
+    color: black;
+}
+
+.task-card button {
+    background-color: rgb(94, 91, 91);
+    color: whitesmoke;
+    padding: 2px 10px;
+    border-radius: 5px;
+    border: none;
+}
+
 .past-due {
     background-color: red;
-    color: whitesmoke;
+
 }
 
 .in-progress {
-    background-color: rgb(175, 175, 66);
-    color: whitesmoke;
+    background-color: rgb(217, 217, 73);
 }
 
 .done {
     background-color: white;
-    color: black;
 }
