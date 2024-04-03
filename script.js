@@ -9,7 +9,15 @@ function generateTaskId() {
 
 // Todo: create a function to create a task card
 function createTaskCard(task) {
+    const taskCard = $('<div>').addClass('task-card draggable overlap')
+    const title = $('<p>').text(task.taskTitle);//creating html elements
+    const date = $('<p>').text(task.taskDate);
+    const desc = $('<p>').text(task.taskDesc);
+    const btn = $('<button>').text('Delete').attr('data-btn', 'delete'); //creating and styling btn
+    taskCard.append(title, date, desc, btn);
+    $("#todo-cards").append(taskCard);
 
+    taskCard.draggable();
 }
 
 // Todo: create a function to render the task list and make cards draggable

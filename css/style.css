@@ -24,3 +24,18 @@ body {
 label {
     width: 100%;
 }
+
+.task-card {
+    width: 40%;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+.btn-container {
+    display: flex;
+    justify-content: center;
+}
+
+.overlap {
+    z-index: 1;
+}
