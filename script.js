@@ -4,10 +4,10 @@ let nextId = JSON.parse(localStorage.getItem("nextId")) || 1; //if its full, ret
 
 //converts nextId to string, increases by one each refresh, stores it in local storage
 function generateTaskId() {
-    const uniqueId = nextId.toString();
+    const taskUniqueId = nextId.toString();
     nextId++;
     localStorage.setItem("nextId", JSON.stringify(nextId));
-    return uniqueId;
+    return taskUniqueId;
 }
 
 // creates card, adds classes, id, to make it draggable and correct styles appear
