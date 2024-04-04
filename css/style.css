@@ -20,10 +20,18 @@ body {
     width: 100%;
 }
 
-.task-desc textarea,
+.task-desc textarea {
+    width: 100%;
+    resize: none;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
+
+/* .task-desc textarea,
 label {
     width: 100%;
-}
+} */
 
 
 .btn-container {

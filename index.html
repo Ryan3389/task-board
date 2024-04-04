@@ -41,7 +41,7 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Task Information</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
@@ -49,25 +49,21 @@
             <form>
               <div class="mb-3">
                 <label for="task-title" class="form-label">Task Title</label>
-                <input type="text" class="form-control" id="task-title">
+                <input type="text" class="form-control" id="task-title" placeholder="Task title">
               </div>
               <div class="mb-3">
                 <label for="task-date" class="form-label">Task Date</label>
                 <input type="date" class="form-control" id="task-date">
 
               </div>
-              <div class="mb-3 form-check task-desc">
+              <div class="mb-3  task-desc">
                 <label class="form-check-label" for="task-desc">Task Description</label>
-                <textarea name="task-desc" id="task-desc" placeholder="past due, in progress, done"></textarea>
+                <textarea name="task-desc" id="task-desc" placeholder="Past due, in progress, done"></textarea>
               </div>
 
-              <button type="submit" class="btn btn-primary">Submit</button>
+              <button type="submit" class="btn btn-success">Submit</button>
             </form>
             <!--END OF FORM-->
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
           </div>
         </div>
       </div>
